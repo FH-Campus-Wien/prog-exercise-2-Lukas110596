@@ -113,7 +113,7 @@ public class App {
                     System.out.print(" ");
                 }
 
-                for (int k = 0 - i; k <= i; k++) {
+                for (int k = -i; k <= i; k++) {
                     System.out.print((char) (c - Math.abs(k)));
                 }
                 System.out.println();
@@ -123,7 +123,7 @@ public class App {
                 for (int j = i; j <= h / 2; j++) {
                     System.out.print(" ");
                 }
-                for (int k = 0 - i + 1; k < i; k++) {
+                for (int k = -i + 1; k < i; k++) {
                     System.out.print((char) (c - Math.abs(k)));
                 }
                 System.out.println();
@@ -139,45 +139,46 @@ public class App {
     //todo Task 5
     public void marks() {
         // input your solution here
-        Scanner scan5 = new Scanner(System.in);
 
-        float sum = 0;
+
+        Scanner scan = new Scanner(System.in);
         int negativ = 0;
-        int num = 0;
+        double grade = 0;
+        int count = 0;
 
 
-        for (int i = 1; i > 0; i++) {
+        for (int i = 1; true; i++) {
             System.out.print("Mark " + i + ": ");
-            int number = scan5.nextInt();
-
-            if (number == 5) {
-                negativ++;
-            }
-            if (number > 5 || number < 0) {
-                System.out.println("Invalid mark!");
-            } else {
-                sum += number;
-                num++;
-            }
-
-            if (number == 0) {
-                if (num > 1) {
-                    float average = sum / (num - 1);
-                    System.out.println("Average: " + String.format("%.2f", average));
-                    System.out.println("Negative marks: " + negativ);
-                } else {
-                    System.out.println("Average: 0.00");
-                    System.out.println("Negative marks: 0");
-
-                }
+            double eingabe = scan.nextDouble();
+            if (eingabe == 0 && i == 1) {
+                System.out.println("Average: 0.00");
+                System.out.println("Negative marks: 0");
                 break;
 
             }
+            if (eingabe < 0 || eingabe > 5) {
+                System.out.println("Invalid mark!");
+                System.out.print("Mark " + i + ": ");
+                eingabe = scan.nextDouble();
+                count += eingabe;
 
+            } else {
+                count += eingabe;
+            }
+            if (eingabe == 1 || eingabe == 2 || eingabe == 3 || eingabe == 4 || eingabe == 5) {
+                grade++;
+            }
 
+            if (eingabe == 5) {
+                negativ++;
+            }
+            if (i > 1 && eingabe == 0) {
+                System.out.printf("Average: %.2f", (count / grade));
+                System.out.println();
+                System.out.println("Negative marks: " + negativ);
+                break;
+            }
         }
-
-
     }
 
 
