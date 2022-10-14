@@ -99,16 +99,49 @@ public class App {
     //todo Task 4
     public void printRhombus() {
         // input your solution here
+        Scanner scan4 = new Scanner(System.in);
+
+        System.out.print("h: ");
+        int h = scan4.nextInt();
+
+        System.out.print("c: ");
+        char c = scan4.next().charAt(0);
+
+        if (h % 2 == 1) {
+            for (int i = 0; i <= h / 2; i++) {
+                for (int j = i; j < h / 2; j++) {
+                    System.out.print(" ");
+                }
+
+                for (int k = 0 - i; k <= i; k++) {
+                    System.out.print((char) (c - Math.abs(k)));
+                }
+                System.out.println();
+            }
+
+            for (int i = h / 2; i > 0; i--) {
+                for (int j = i; j <= h / 2; j++) {
+                    System.out.print(" ");
+                }
+                for (int k = 0 - i + 1; k < i; k++) {
+                    System.out.print((char) (c - Math.abs(k)));
+                }
+                System.out.println();
+            }
 
 
+        } else {
+            System.out.println("Invalid number!");
+        }
     }
+    // Quelle: TUT Progammieren
 
     //todo Task 5
     public void marks() {
         // input your solution here
         Scanner scan5 = new Scanner(System.in);
 
-        double sum = 0;
+        float sum = 0;
         int negativ = 0;
         int num = 0;
 
@@ -120,7 +153,7 @@ public class App {
             if (number == 5) {
                 negativ++;
             }
-            if (number > 5 | number < 0) {
+            if (number > 5 || number < 0) {
                 System.out.println("Invalid mark!");
             } else {
                 sum += number;
@@ -129,12 +162,13 @@ public class App {
 
             if (number == 0) {
                 if (num > 1) {
-                    double average = sum / (num - 1);
+                    float average = sum / (num - 1);
                     System.out.println("Average: " + String.format("%.2f", average));
                     System.out.println("Negative marks: " + negativ);
                 } else {
                     System.out.println("Average: 0.00");
                     System.out.println("Negative marks: 0");
+
                 }
                 break;
 
@@ -150,16 +184,14 @@ public class App {
     //todo Task 6
     public void happyNumbers() {
         // input your solution here
-        Scanner scan6 = new Scanner (System.in);
+        Scanner scan6 = new Scanner(System.in);
 
         int n, r = 1, num, sum = 0;
         System.out.print("n: ");
         n = scan6.nextInt();
         num = n;
-        while (num > 9)
-        {
-            while (num > 0)
-            {
+        while (num > 9) {
+            while (num > 0) {
                 r = num % 10;
                 sum = sum + (r * r);
                 num = num / 10;
@@ -167,17 +199,14 @@ public class App {
             num = sum;
             sum = 0;
         }
-        if (num == 1)
-        {
+        if (num == 1) {
             System.out.println("Happy number!");
-        }
-        else
-        {
+        } else {
             System.out.println("Sad number!");
         }
     }
 
-        // https://www.efaculty.in/java-programs/happy-number-program-in-java/
+    //Quelle: https://www.efaculty.in/java-programs/happy-number-program-in-java/
 
     public static void main(String[] args) {
         App exercise2 = new App();
